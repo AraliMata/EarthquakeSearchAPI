@@ -4,7 +4,8 @@
   "description": "Api to manage data about search results in EarthquakeSearch app",
   "main": "node server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [
     "example",
