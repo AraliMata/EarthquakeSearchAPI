@@ -30,6 +30,11 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     // ========================
     // Routes
     // ========================
+    app.get('/', (req, res) => {
+      res.send('hello world')
+    })
+
+    
     app.get('/location-history', (req, res) => {
       db.collection('locations-history').find().toArray()
         .then(quotes => {
