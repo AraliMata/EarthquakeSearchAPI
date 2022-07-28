@@ -11,7 +11,7 @@ app.use(cors({
 
 const connectionString = 'mongodb+srv://aralimata:9526cb3867.@cluster0.z96kawl.mongodb.net/?retryWrites=true&w=majority';
 
-MongoClient.connect(connectionString, { useUnifiedTopology: true })
+MongoClient.connect(process.env.MONGODB_URI || connectionString, { useUnifiedTopology: true })
   .then(client => {
     console.log('Connected to Database')
     const db = client.db('earthquake-search-db')
