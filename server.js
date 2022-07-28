@@ -17,8 +17,6 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     const db = client.db('earthquake-search-db')
     const locationsCollection = db.collection('locations-history')
 
-    console.log("entré");
-
     // ========================
     // Middlewares
     // ========================
@@ -31,10 +29,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     // ========================
     // Routes
     // ========================
-    app.get('/', (req, res) => {
-      res.send('hello world')
-    })
-
+    
     
     app.get('/location-history', (req, res) => {
       db.collection('locations-history').find().toArray()
@@ -66,14 +61,22 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
           res.json('Deleted Darth Vadar\'s quote')
         })
         .catch(error => console.error(error))
+    }) 
+    
+    app.get('/', (req, res) => {
+      res.send('hello world')
     })
-
-    // ========================
-    // Listen
-    // ========================
-   
+  
+     // ========================
+      // Listen
+      // ========================
+  
     app.listen(process.env.PORT || 3000, function () {
-      console.log(`listening on ${port}`)
+      console.log(`Server started successfully`)
     })
+    
   })
   .catch(console.error)
+
+
+ 
