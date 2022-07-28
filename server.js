@@ -63,20 +63,20 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         .catch(error => console.error(error))
     }) 
     
-    app.get('/', (req, res) => {
-      res.send('hello world')
-    })
-  
-     // ========================
-      // Listen
-      // ========================
-  
-    app.listen(process.env.PORT || 3000, function () {
-      console.log(`Server started successfully`)
-    })
+   
     
   })
   .catch(console.error)
 
+  app.get('/', (req, res) => {
+    res.send('hello world')
+  })
 
+   // ========================
+    // Listen
+    // ========================
+
+  app.listen(process.env.PORT || 3000, function () {
+    console.log(`Server started successfully`)
+  })
  
