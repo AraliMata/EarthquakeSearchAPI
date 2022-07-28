@@ -27,6 +27,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     app.use(bodyParser.json())
     app.use(express.static('public'))
 
+
     // ========================
     // Routes
     // ========================
@@ -53,31 +54,6 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         .catch(error => console.error(error))
     })
 
-    app.post('/chiapas', (req, res) => {
-      res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-      quotesCollection.insertOne(req.body)
-        .then(result => {
-          console.log("insertado")
-        })
-        .catch(error => console.error(error))
-    })
-
-    app.put('/quotes', (req, res) => {
-      quotesCollection.findOneAndUpdate(
-        { name: 'Yoda' },
-        {
-          $set: {
-            name: req.body.name,
-            quote: req.body.quote
-          }
-        },
-        {
-          upsert: true
-        }
-      )
-        .then(result => res.json('Success'))
-        .catch(error => console.error(error))
-    })
 
     app.delete('/quotes', (req, res) => {
       quotesCollection.deleteOne(
@@ -95,10 +71,8 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     // ========================
     // Listen
     // ========================
-    const port = process.env.PORT
-    // === 'production'
-    //const port = isProduction ? 7500 : 3000
-    app.listen(port, function () {
+   
+    app.listen(process.env.PORT || 3000, function () {
       console.log(`listening on ${port}`)
     })
   })
